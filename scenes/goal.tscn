@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://c2q7hmerqsk2s"]
+
+[ext_resource type="Texture2D" uid="uid://qn0thmt3cyg4" path="res://End (Pressed) (64x64).png" id="1_77nf7"]
+[ext_resource type="Script" path="res://scenes/goal.gd" id="1_qxrk6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07fee"]
+atlas = ExtResource("1_77nf7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aru6t"]
+atlas = ExtResource("1_77nf7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnftv"]
+atlas = ExtResource("1_77nf7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efhda"]
+atlas = ExtResource("1_77nf7")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksor4"]
+atlas = ExtResource("1_77nf7")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1yyc"]
+atlas = ExtResource("1_77nf7")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkkgw"]
+atlas = ExtResource("1_77nf7")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xrbyj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07fee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aru6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnftv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efhda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksor4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1yyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkkgw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmwvd"]
+size = Vector2(44, 44)
+
+[node name="Goal" type="Area2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_qxrk6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_xrbyj")
+autoplay = "default"
+frame_progress = 0.485782
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_tmwvd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

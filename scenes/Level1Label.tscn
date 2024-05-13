@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi60qrf4npqhm"]
+
+[ext_resource type="Script" path="res://scenes/Level1Label.gd" id="1_natql"]
+[ext_resource type="Texture2D" uid="uid://7ljrpngk3r3g" path="res://01.png" id="2_un7sb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xrbyj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_un7sb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmwvd"]
+size = Vector2(17, 15)
+
+[node name="Level1Label" type="Area2D"]
+texture_filter = 1
+scale = Vector2(6, 6)
+script = ExtResource("1_natql")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_xrbyj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tmwvd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
